@@ -8,7 +8,7 @@ import {
 import { FaCartPlus } from "react-icons/fa";
 import { mudarFavorito } from "store/reducers/itens";
 import { useDispatch, useSelector } from "react-redux";
-import { mudarCarrinho } from "store/reducers/carrinho";
+import { mudarCarrinho, mudarQuantidade } from "store/reducers/carrinho";
 import classNames from "classnames";
 
 const iconProps = {
@@ -22,7 +22,8 @@ const quantityProps = {
 };
 
 export const Item = (props) => {
-  const { titulo, foto, preco, descricao, favorito, id, carrinho } = props;
+  const { titulo, foto, preco, descricao, favorito, id, carrinho, quantity } =
+    props;
   const dispatch = useDispatch();
 
   const isCart = useSelector((state) =>
@@ -71,9 +72,21 @@ export const Item = (props) => {
             {carrinho ? (
               <div className={styles.quantidade}>
                 Quantidade:
-                <AiFillMinusCircle {...quantityProps} />
-                <span> {String(0 || 0).padStart(2, "0")} </span>
-                <AiFillPlusCircle {...quantityProps} />
+                <AiFillMinusCircle
+                  {...quantityProps}
+                  onClick={() => {
+                    if (quantity >= 1) {
+                      dispatch(mudarQuantidade({ id, quantity: -1 }));
+                    }
+                  }}
+                />
+                <span> {String(quantity || 0).padStart(2, "0")} </span>
+                <AiFillPlusCircle
+                  {...quantityProps}
+                  onClick={() =>
+                    dispatch(mudarQuantidade({ id, quantity: +1 }))
+                  }
+                />
               </div>
             ) : (
               <FaCartPlus

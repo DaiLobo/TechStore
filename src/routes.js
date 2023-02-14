@@ -3,6 +3,7 @@ import { PatternPage } from "components/PatternPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Categoria } from "pages/Categoria";
 import { Carrinho } from "pages/Carrinho";
+import { Anuncie } from "pages/Anuncie";
 
 export const Router = () => {
   return (
@@ -12,6 +13,8 @@ export const Router = () => {
           <Route index element={<Home />} />
           <Route path="/categoria/:nomeCategoria" element={<Categoria />} />
           <Route path="/carrinho" element={<Carrinho />} />
+          <Route path="/anuncie/:nomeCategoria" element={<Anuncie />} />
+          <Route path="/anuncie" element={<Anuncie />} />
         </Route>
       </Routes>
     </BrowserRouter>

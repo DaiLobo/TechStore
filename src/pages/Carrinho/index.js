@@ -1,3 +1,4 @@
+import { Button } from "components/Button";
 import { Header } from "components/Header";
 import { Item } from "components/Item";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,12 +39,9 @@ export const Carrinho = () => {
             Subtotal: <strong> R$ {total.toFixed(2)} </strong>
           </span>
         </div>
-        <button
-          className={styles.finalizar}
-          onClick={() => dispatch(resetCarrinho())}
-        >
+        <Button onClick={() => dispatch(resetCarrinho())}>
           Finalizar compra
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -4,10 +4,10 @@ import { Header } from "components/Header";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "components/Button";
-import app from "common/config/api";
-import { useCallback, useEffect } from "react";
+
+import { useEffect } from "react";
 import { buscarCategorias } from "store/reducers/categorias";
-import { adicionarItens, buscarItens } from "store/reducers/itens";
+import { buscarItens } from "store/reducers/itens";
 
 export const Home = () => {
   const dispatch = useDispatch();

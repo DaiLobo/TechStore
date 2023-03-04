@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "components/Button";
 
 import { useEffect } from "react";
-import { buscarCategorias } from "store/reducers/categorias";
-import { buscarItens } from "store/reducers/itens";
+import { carregarCategorias } from "store/reducers/categorias";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -15,8 +14,9 @@ export const Home = () => {
   const categorias = useSelector((state) => state.categorias);
 
   useEffect(() => {
-    dispatch(buscarCategorias());
-    dispatch(buscarItens());
+    // dispatch(buscarCategorias());
+    // dispatch(buscarItens());
+    dispatch(carregarCategorias());
   }, [dispatch]);
 
   return (

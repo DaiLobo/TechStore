@@ -1,9 +1,6 @@
-import { createStandaloneToast } from "@chakra-ui/toast";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import itensService from "services/itens";
 import { v4 as uuid } from "uuid";
-
-const { toast } = createStandaloneToast();
 
 const initialState = [];
 
@@ -36,41 +33,49 @@ const itensSlice = createSlice({
       const index = state.findIndex((item) => item.id === payload);
       state.splice(index, 1);
     },
+    adicionarItens: (state, { payload }) => {
+      state.push(...payload);
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(buscarItens.fulfilled, (state, { payload }) => {
-        toast({
-          title: "Sucesso!",
-          description: "Itens carregados com sucesso",
-          duration: 2000,
-          status: "success",
-          isClosable: true,
-        });
+        // toast({
+        //   title: "Sucesso!",
+        //   description: "Itens carregados com sucesso",
+        //   duration: 2000,
+        //   status: "success",
+        //   isClosable: true,
+        // });
         return payload;
       })
       .addCase(buscarItens.pending, (state, { payload }) => {
-        toast({
-          title: "Carregando",
-          description: "Carregando itens",
-          duration: 2000,
-          status: "loading",
-          isClosable: true,
-        });
+        // toast({
+        //   title: "Carregando",
+        //   description: "Carregando itens",
+        //   duration: 2000,
+        //   status: "loading",
+        //   isClosable: true,
+        // });
       })
       .addCase(buscarItens, (state, { payload }) => {
-        toast({
-          title: "Error",
-          description: "Erro na busca de itens",
-          duration: 2000,
-          status: "error",
-          isClosable: true,
-        });
+        // toast({
+        //   title: "Error",
+        //   description: "Erro na busca de itens",
+        //   duration: 2000,
+        //   status: "error",
+        //   isClosable: true,
+        // });
       });
   },
 });
 
-export const { mudarFavorito, cadastrarItem, mudarItem, deletarItem } =
-  itensSlice.actions;
+export const {
+  mudarFavorito,
+  cadastrarItem,
+  mudarItem,
+  deletarItem,
+  adicionarItens,
+} = itensSlice.actions;
 
 export default itensSlice.reducer;

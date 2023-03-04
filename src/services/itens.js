@@ -5,6 +5,11 @@ const itensService = {
     const response = await app.get("/itens");
     return response.data;
   },
+  buscarDeCategorias: async (nomeCategoria) => {
+    const response = await app.get(`itens?categoria=${nomeCategoria}`);
+
+    return response.data;
+  },
 };
 
 export default itensService;

@@ -12,7 +12,6 @@ export const Carrinho = () => {
   const navigate = useNavigate();
 
   const { carrinho, total } = useSelector((state) => {
-    let total = 0;
     const regexp = new RegExp(state.busca, "i");
     const carrinhoReduce = state.carrinho.data.reduce(
       (itens, itemNoCarrinho) => {

@@ -12,7 +12,7 @@ import {
 } from "store/reducers/carrinho";
 import { adicionarUsuario } from "store/reducers/usuario";
 
-const usuarioLogado = 1;
+const usuarioLogado = 2;
 
 function* carregarPagamentoSaga() {
   try {
@@ -21,8 +21,8 @@ function* carregarPagamentoSaga() {
       cartoesService.buscarPorIdUsuario,
       usuarioLogado
     );
-    const bandeirasids = cartoes.map((cartao) => cartao.bandeiraid);
-    const bandeiras = yield call(bandeirasService.buscarPorId, bandeirasids);
+    const bandeirasIds = cartoes.map((cartao) => cartao.bandeiraId);
+    const bandeiras = yield call(bandeirasService.buscarPorId, bandeirasIds);
 
     const cartoesComBandeiras = cartoes.map((cartao) => {
       const bandeiraDoCartao = bandeiras.find(

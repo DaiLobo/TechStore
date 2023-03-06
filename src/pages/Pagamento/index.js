@@ -4,7 +4,7 @@ import Select from "components/Select";
 
 import { useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { carregarPagamento } from "store/reducers/carrinho";
 
@@ -12,6 +12,8 @@ import styles from "./Pagamento.module.scss";
 
 export const Pagamento = () => {
   const dispatch = useDispatch();
+  const usuario = useSelector((state) => state.usuario);
+  const total = useSelector((state) => state.carrinho.total);
 
   useEffect(() => {
     dispatch(carregarPagamento());
@@ -22,13 +24,18 @@ export const Pagamento = () => {
       <Header titulo="Pagamento" />
       <div className={styles.dados}>
         <p className={styles.forma}>
-          Olá usuário! Escolha a forma de pagamento:
+          Olá {usuario.nome}! Escolha a forma de pagamento:
         </p>
         <Select placeholder="Forma de pagamento" alt="Forma de pagamento">
           <option value="-"> Forma de pagamento</option>
+          {usuario.cartoes?.map((cartao) => (
+            <option key={cartao.id} value={cartao.id}>
+              {cartao.nome}
+            </option>
+          ))}
         </Select>
         <div className={styles.content}>
-          <p>Total com taxas: R$ 0.00</p>
+          <p>Total com taxas: R$ {total.toFixed(2)}</p>
         </div>
         <div className={styles.finalizar}>
           <Button> Finalizar Compra </Button>

@@ -1,11 +1,14 @@
 import { Button } from "components/Button";
 import { Header } from "components/Header";
 import { Item } from "components/Item";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { carregarUmaCategoria } from "store/reducers/categorias";
 import styles from "./Categoria.module.scss";
 
 export const Categoria = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nomeCategoria } = useParams();
   const { categoria, itens } = useSelector((state) => {
@@ -19,6 +22,10 @@ export const Categoria = () => {
       ),
     };
   });
+
+  useEffect(() => {
+    dispatch(carregarUmaCategoria(nomeCategoria));
+  }, [dispatch, nomeCategoria]);
   return (
     <>
       <Header

@@ -46,7 +46,7 @@ function* calcularTotal() {
 
   const total = state.carrinho.data.reduce((total, itemNoCarrinho) => {
     const item = state.itens.find((item) => item.id === itemNoCarrinho.id);
-    return total + item.preco * itemNoCarrinho.quantidade;
+    return total + item.preco * itemNoCarrinho.quantity;
   }, 0);
 
   yield put(mudarTotal(total));

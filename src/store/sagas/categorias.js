@@ -22,7 +22,6 @@ function* observarCategorias() {
     yield delay(2000);
 
     const categorias = yield call(categoriasService.buscar);
-    console.log(categorias);
     yield put(adicionarTodasAsCategorias(categorias));
 
     toast({

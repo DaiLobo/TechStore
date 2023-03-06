@@ -2,9 +2,21 @@ import { Button } from "components/Button";
 import { Header } from "components/Header";
 import Select from "components/Select";
 
+import { useEffect } from "react";
+
+import { useDispatch } from "react-redux";
+
+import { carregarPagamento } from "store/reducers/carrinho";
+
 import styles from "./Pagamento.module.scss";
 
 export const Pagamento = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(carregarPagamento());
+  }, [dispatch]);
+
   return (
     <div className={styles.container}>
       <Header titulo="Pagamento" />

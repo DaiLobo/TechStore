@@ -1,6 +1,6 @@
 const { createSlice, createAction } = require("@reduxjs/toolkit");
 
-const initialState = [];
+const initialState = { data: [], total: 0 };
 
 export const carregarPagamento = createAction("carrinho/carregarPagamento");
 
@@ -9,20 +9,26 @@ const carrinhoSlice = createSlice({
   initialState,
   reducers: {
     mudarCarrinho: (state, { payload }) => {
-      const existItem = state.some((item) => item.id === payload);
+      const existItem = state.data.some((item) => item.id === payload);
       if (!existItem) {
-        return [
-          ...state,
-          {
-            id: payload,
-            quantity: 1,
-          },
-        ];
+        return {
+          total: state.total,
+          data: [
+            ...state.data,
+            {
+              id: payload,
+              quantity: 1,
+            },
+          ],
+        };
       }
-      return state.filter((item) => item.id !== payload);
+      return {
+        total: state.total,
+        data: state.data.filter((item) => item.id !== payload),
+      };
     },
     mudarQuantidade: (state, { payload }) => {
-      state = state.map((itemNoCarrinho) => {
+      state.data = state.data.map((itemNoCarrinho) => {
         if (itemNoCarrinho.id === payload.id) {
           itemNoCarrinho.quantity += payload.quantity;
         }
@@ -30,10 +36,13 @@ const carrinhoSlice = createSlice({
       });
     },
     resetCarrinho: () => initialState,
+    mudarTotal: (state, { payload }) => {
+      state.total = payload;
+    },
   },
 });
 
-export const { mudarCarrinho, mudarQuantidade, resetCarrinho } =
+export const { mudarCarrinho, mudarQuantidade, resetCarrinho, mudarTotal } =
   carrinhoSlice.actions;
 
 export default carrinhoSlice.reducer;

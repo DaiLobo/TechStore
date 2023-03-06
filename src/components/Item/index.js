@@ -35,7 +35,7 @@ export const Item = (props) => {
   const [newTitle, setNewTitle] = useState(titulo);
 
   const isCart = useSelector((state) =>
-    state.carrinho.some((itemNoCarrinho) => itemNoCarrinho.id === id)
+    state.carrinho.data?.some((itemNoCarrinho) => itemNoCarrinho.id === id)
   );
 
   const resolverCarrinho = () => {

@@ -34,7 +34,7 @@ export const Home = () => {
           <h1>Categorias</h1>
         </div>
         <div className={styles["categorias-container"]}>
-          {categorias.map((categoria, index) => (
+          {categorias?.map((categoria, index) => (
             <div
               key={index}
               onClick={() => navigate(`/categoria/${categoria.id}`)}

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const app = axios.create({
-  baseURL: "https://tech-store-dr.vercel.app",
+  baseURL: "http://localhost:3001",
 });
 
 export default app;

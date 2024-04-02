@@ -22,7 +22,7 @@ Este é um projeto em React com Redux de uma loja de eletrônicos no qual o usu�
 <p align="center">
  <a href="#-pré-requisitos">Pré-requisitos</a> •
  <a href="#-instalação">Instalação</a> • 
- <a href="#-executando-o-projeto">Executando o Projeto</a> • 
+ <a href="#%EF%B8%8F-executando-o-projeto">Executando o Projeto</a> • 
  <a href="#-funcionalidades-do-projeto">Funcionalidades do projeto</a> • 
  <a href="#-layout">Layout</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 

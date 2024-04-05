@@ -3,7 +3,7 @@
 </div>
 
 <h4 align="center"> 
-	🚧 Em desenvolvimento: Acesse o projeto <a href="">TechStore</a>
+	🚧 Em desenvolvimento: Acesse o projeto <a href="https://tech-store-dr.vercel.app/">TechStore</a>
 </h4>
 
 ## 📝 Sobre
